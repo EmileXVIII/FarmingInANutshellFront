@@ -1,12 +1,33 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
 
-const itemtest = {
-  infos: {
-    cost: 40,
-    name: "Item test"
+this.itemtest = {
+  infos:{
+    id: id,
+    cost: this.randomInt(100),
+    specialAttribute: null,
+    name: name,
+    description: description,
+    iconAdress: iconAdress,
+    location: null,
+    rarity: rarity
   }
-};
+}
+/*
+  item : map witch contain informations about the item
+  this.itemtest = {
+    infos:{
+      id: id,
+      cost: this.randomInt(100),
+      specialAttribute: null,
+      name: name,
+      description: description,
+      iconAdress: iconAdress,
+      location: null,
+      rarity: rarity
+    }
+  }
+*/
 
 export default class SlotItem extends Component {
   constructor() {
@@ -14,7 +35,7 @@ export default class SlotItem extends Component {
     this.state = {
       // item: this.props.item,
       background: require("../../../public/img/Shop-Background-item.png"),
-      item: itemtest
+      item : {infos: this.props.item}
     };
   }
 
@@ -38,18 +59,22 @@ export default class SlotItem extends Component {
       >
         <ImageBackground
           source={this.state.background}
-          style={styles.image}
+          style={styles.imageBackground}
           onAccessibilityTap={this.toggleTap}
         >
           <Text>{this.state.item.infos.name}</Text>
-          {/* <img
-            width="30px"
-            src={this.state.item.infos.iconAdresse}
-            alt="Item"
-          /> */}
+          <Image
+            name="imageItem"
+            source={require(this.item.infos.iconAdress)}
+            alt="Object Image"
+            style={styles.imageItem}
+          >
+
+          </Image>
           <Text className="cost">
             {this.state.item.infos.cost}{" "}
             <Image
+              name="coinImage"
               source={require("../../../public/img/CoinIcon.png")}
               alt="Coin Icon"
               style={styles.image}
@@ -69,7 +94,15 @@ const styles = StyleSheet.create({
     height: 50,
     width: 50
   },
-  image: {
+  imageBackground: {
+    height: 50,
+    width: 50
+  },
+  imageItem: {
+    height: 50,
+    width: 50
+  },
+  imageCoin: {
     height: 50,
     width: 50
   }
