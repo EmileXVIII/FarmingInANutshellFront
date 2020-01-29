@@ -4,6 +4,7 @@ import { Container, Text } from "native-base";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import FooterMenu from "./src/components/footer";
+import SlotItem from "./src/components/slotItem";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -29,7 +30,21 @@ export default class App extends React.Component {
 
     return (
       <Container>
-        <FooterMenu></FooterMenu>
+        <SlotItem item={
+          {
+            infos:{
+              id: 1,
+              cost: 50,
+              specialAttribute: null,
+              name: "testItem",
+              description: "description",
+              iconAdress: "local/CoinIcon.png",
+              location: null,
+              rarity: "rarity"
+            }
+          }
+        }></SlotItem>
+        {/*<FooterMenu></FooterMenu>*/}
       </Container>
     );
   }

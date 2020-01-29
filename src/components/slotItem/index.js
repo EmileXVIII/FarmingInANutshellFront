@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { StyleSheet, Text, View, ImageBackground, Image } from "react-native";
+import images from "../../../public/img";
+import imgShortCuts from "../../../public/img";
 
+/*
 this.itemtest = {
   infos:{
     id: id,
@@ -12,7 +15,7 @@ this.itemtest = {
     location: null,
     rarity: rarity
   }
-}
+}*/
 /*
   item : map witch contain informations about the item
   this.itemtest = {
@@ -34,8 +37,9 @@ export default class SlotItem extends Component {
     super();
     this.state = {
       // item: this.props.item,
+      URL:"toto",
       background: require("../../../public/img/Shop-Background-item.png"),
-      item : {infos: this.props.item}
+      item : {}
     };
   }
 
@@ -50,37 +54,64 @@ export default class SlotItem extends Component {
     this.props.desc = "";
   };
 
+  componentWillMount(){
+    this.setState({item:this.props.item})
+  }
+
+  componentWillReceiveProps(nextProps){
+    this.setState({item:nextProps.item})
+  }
+
   render() {
+    // require the module
+var RNGRP = require('react-native-get-real-path');
+
+var filePath1 =imgShortCuts[this.state.item.infos.iconAdress]?this.state.item.infos.iconAdress:"/local/tv_error.png"
+RNGRP.getRealPathFromURI("../../../public/img/Shop-Background-item.png").then(filePath =>
+  this.setState({URL:filePath})
+)
     return (
       <View
         style={styles.view}
         // onClick={this.props.onClick}
         className="slot-item-shop"
       >
+        <Text>
+          {this.state.URL}
+        </Text>
+        {/*<Text>
+          {JSON.stringify(this.state.item)}
+        </Text>*/}
+      {/*
         <ImageBackground
           source={this.state.background}
           style={styles.imageBackground}
           onAccessibilityTap={this.toggleTap}
-        >
-          <Text>{this.state.item.infos.name}</Text>
+      >*/}
+          <Text>{this.state.item.infos.iconAdress}</Text>
+        <Text>
+          {filePath1}
+        </Text>
           <Image
             name="imageItem"
-            source={require(this.item.infos.iconAdress)}
+            source={imgShortCuts[filePath1]}
             alt="Object Image"
             style={styles.imageItem}
-          >
+          />
+          <Text>{JSON.stringify(this.item)}</Text>
 
-          </Image>
+
           <Text className="cost">
             {this.state.item.infos.cost}{" "}
-            <Image
-              name="coinImage"
-              source={require("../../../public/img/CoinIcon.png")}
-              alt="Coin Icon"
-              style={styles.image}
-            />
           </Text>
-        </ImageBackground>
+          <Image
+              name="coinImage"
+              source={imgShortCuts[filePath1]}
+              alt="Coin Icon"
+              style={styles.imageCoin}
+            />
+        {/*</ImageBackground>*/}
+      
       </View>
     );
   }
@@ -91,8 +122,8 @@ const heightView = "15%";
 
 const styles = StyleSheet.create({
   view: {
-    height: 50,
-    width: 50
+    height: 5000,
+    width: 500
   },
   imageBackground: {
     height: 50,
