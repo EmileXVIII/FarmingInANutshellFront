@@ -5,6 +5,7 @@ import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 import FooterMenu from "./src/components/footer";
 import SlotItem from "./src/components/slotItem";
+import ListItems from "./src/components/listItems";
 
 export default class App extends React.Component {
   constructor(props) {
@@ -30,7 +31,7 @@ export default class App extends React.Component {
 
     return (
       <Container>
-        <SlotItem item={
+        <ListItems items={[
           {
             infos:{
               id: 1,
@@ -42,8 +43,23 @@ export default class App extends React.Component {
               location: null,
               rarity: "rarity"
             }
+          },
+          {
+            infos:{
+              id: 2,
+              cost: 25,
+              specialAttribute: null,
+              name: "testItem",
+              description: "description",
+              iconAdress: "local/Shop-Background-item.png",
+              location: null,
+              rarity: "rarity"
+            }
           }
-        }></SlotItem>
+        ]}
+         nbSlotItem={2}
+         mapOfOthersAtributes={null}
+        ></ListItems>
         {/*<FooterMenu></FooterMenu>*/}
       </Container>
     );

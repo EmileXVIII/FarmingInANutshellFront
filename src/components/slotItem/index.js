@@ -76,34 +76,6 @@ RNGRP.getRealPathFromURI("../../../public/img/Shop-Background-item.png").then(fi
         // onClick={this.props.onClick}
         className="slot-item-shop"
       >
-        <Text>
-          {this.state.URL}
-        </Text>
-        {/*<Text>
-          {JSON.stringify(this.state.item)}
-        </Text>*/}
-      {/*
-        <ImageBackground
-          source={this.state.background}
-          style={styles.imageBackground}
-          onAccessibilityTap={this.toggleTap}
-      >*/}
-          <Text>{this.state.item.infos.iconAdress}</Text>
-        <Text>
-          {filePath1}
-        </Text>
-          <Image
-            name="imageItem"
-            source={imgShortCuts[filePath1]}
-            alt="Object Image"
-            style={styles.imageItem}
-          />
-          <Text>{JSON.stringify(this.item)}</Text>
-
-
-          <Text className="cost">
-            {this.state.item.infos.cost}{" "}
-          </Text>
           <Image
               name="coinImage"
               source={imgShortCuts[filePath1]}
@@ -122,7 +94,7 @@ const heightView = "15%";
 
 const styles = StyleSheet.create({
   view: {
-    height: 5000,
+    height: 100,
     width: 500
   },
   imageBackground: {
