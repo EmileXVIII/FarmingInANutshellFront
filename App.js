@@ -57,7 +57,7 @@ export default class App extends React.Component {
             }
           }
         ]}
-         nbSlotItem={2}
+         nbSlotItem={20}
          mapOfOthersAtributes={null}
         ></ListItems>
         {/*<FooterMenu></FooterMenu>*/}

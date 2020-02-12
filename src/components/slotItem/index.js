@@ -64,12 +64,8 @@ export default class SlotItem extends Component {
 
   render() {
     // require the module
-var RNGRP = require('react-native-get-real-path');
-
-var filePath1 =imgShortCuts[this.state.item.infos.iconAdress]?this.state.item.infos.iconAdress:"/local/tv_error.png"
-RNGRP.getRealPathFromURI("../../../public/img/Shop-Background-item.png").then(filePath =>
-  this.setState({URL:filePath})
-)
+  var filePath1 =this.state.item&&this.state.item.infos&&imgShortCuts[this.state.item.infos.iconAdress]?this.state.item.infos.iconAdress:"local/tv_error.png";
+  console.warn(filePath1);
     return (
       <View
         style={styles.view}
@@ -94,8 +90,8 @@ const heightView = "15%";
 
 const styles = StyleSheet.create({
   view: {
-    height: 100,
-    width: 500
+    height: 50,
+    width: 50
   },
   imageBackground: {
     height: 50,
