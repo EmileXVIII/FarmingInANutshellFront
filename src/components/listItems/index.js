@@ -6,9 +6,9 @@ import SlotItem from "../slotItem";
 */
 function createNElements(type, howMany, listAttributs) {
     let listElements = [];
-    console.warn("listAtributes",listAttributs);
+    //console.warn("listAtributes",listAttributs);
     for (let i = 0; i < howMany; i++) {
-        console.warn({ ...listAttributs[i], key: i, numkey: i })
+        //console.warn({ ...listAttributs[i], key: i, numkey: i })
         let newElement = React.createElement(type, { ...listAttributs[i], key: i, numkey: i });
         listElements.push(newElement)
     }

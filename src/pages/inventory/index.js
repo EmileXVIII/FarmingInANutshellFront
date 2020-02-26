@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View } from "react-native";
+import { View,ScrollView } from "react-native";
 
 export default class Inventory extends Component {
   constructor(props) {
@@ -20,8 +20,12 @@ export default class Inventory extends Component {
           className={this.props.className}
         >
           <Text>{this.props.name}</Text>
-          <ListItems name="ListExpendables" nbSlotItem={this.nbCaseExpendable} items={this.props.itemsExpendables} mapOfOthersAttributes={{name:"slotItemExpendables"}}/>
-          <ListItems name="ListEquipements" nbSlotItem={this.nbCaseEquipement} items={this.props.itemsEquipements} mapOfOthersAttributes={{name:"slotItemEquipements"}}/>
+          <ScrollView>
+            <ListItems name="ListExpendables" nbSlotItem={this.nbCaseExpendable} items={this.props.itemsExpendables} mapOfOthersAttributes={{name:"slotItemExpendables"}}/>
+          </ScrollView>
+          <ScrollView>
+            <ListItems name="ListEquipements" nbSlotItem={this.nbCaseEquipement} items={this.props.itemsEquipements} mapOfOthersAttributes={{name:"slotItemEquipements"}}/>
+          </ScrollView>
         </View>
       );
     }

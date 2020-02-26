@@ -1,11 +1,17 @@
 import React from "react";
 import { AppLoading } from "expo";
-import { Container, Text } from "native-base";
+import { Container, Text, View} from "native-base";
 import * as Font from "expo-font";
+import { ScrollView, Dimensions, StyleSheet } from 'react-native';
 import { Ionicons } from "@expo/vector-icons";
 import FooterMenu from "./src/components/footer";
 import SlotItem from "./src/components/slotItem";
 import ListItems from "./src/components/listItems";
+import Draggable from "./src/components/draggable";
+import d from "./src/utils/dimensions"
+const DEVICE_WIDTH = Dimensions.get("window").width
+const DEVICE_HEIGHT = Dimensions.get("window").height
+// const dim = Dimensions.get('window');
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,9 +34,12 @@ export default class App extends React.Component {
     if (!this.state.isReady) {
       return <AppLoading />;
     }
-
+    
+    console.warn(" Dimensions.get('window')")
     return (
-      <Container>
+      // <Container style={{height: dim.height*dimention.mainScreen, width: dim.width*dimention.mainScreen}}>
+      <View style={styles.test}>
+      <ScrollView style={{height: DEVICE_HEIGHT*d.scrollView.h, width: 50}}>
         <ListItems items={[
           {
             infos:{
@@ -58,19 +67,26 @@ export default class App extends React.Component {
           }
         ]}
          nbSlotItem={20}
-         mapOfOthersAtributes={null}
+         mapOfOthersAtributes={{"style":{"height":50,"width":50}}}
         ></ListItems>
-        {/*<FooterMenu></FooterMenu>*/}
-      </Container>
+        </ScrollView>
+        <Draggable conteneurStyle={{height: DEVICE_HEIGHT*d.Screen.h, width: DEVICE_WIDTH*d.Screen.w}}></Draggable>
+        <FooterMenu></FooterMenu>
+      {/* // </Container> */}
+      </View>
     );
   }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: "#fff",
-//     alignItems: "center",
-//     justifyContent: "center"
-//   }
-// });
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  },
+  test: {
+    height: DEVICE_HEIGHT*d.Screen.h,
+    width: DEVICE_WIDTH*d.Screen.w
+  }
+});

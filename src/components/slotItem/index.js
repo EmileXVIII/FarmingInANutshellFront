@@ -65,7 +65,7 @@ export default class SlotItem extends Component {
   render() {
     // require the module
   var filePath1 =this.state.item&&this.state.item.infos&&imgShortCuts[this.state.item.infos.iconAdress]?this.state.item.infos.iconAdress:"local/tv_error.png";
-  console.warn(filePath1);
+  //console.warn(filePath1);
     return (
       <View
         style={styles.view}
